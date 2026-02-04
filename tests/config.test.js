@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { loadConfig, getProfile, listProfiles } = require('../lib/config');
+const { loadConfig, getProfile, listProfiles, initializeConfig } = require('../lib/config');
 
 describe('config module', () => {
   const testConfigDir = '/tmp/ccswitch-test';
@@ -97,6 +97,33 @@ describe('config module', () => {
     test('should return empty array for config without profiles', () => {
       const profiles = listProfiles({});
       expect(profiles).toEqual([]);
+    });
+  });
+
+  describe('initializeConfig', () => {
+    test('should create config from template if not exists', () => {
+      // Ensure config doesn't exist
+      if (fs.existsSync(testConfigPath)) {
+        fs.unlinkSync(testConfigPath);
+      }
+
+      const result = initializeConfig(testConfigDir);
+
+      expect(result).toBe(true);
+      expect(fs.existsSync(testConfigPath)).toBe(true);
+
+      const content = JSON.parse(fs.readFileSync(testConfigPath, 'utf8'));
+      expect(content.profiles).toBeDefined();
+      expect(content.profiles.example).toBeDefined();
+    });
+
+    test('should return false if config already exists', () => {
+      const testConfig = { profiles: {} };
+      fs.writeFileSync(testConfigPath, JSON.stringify(testConfig));
+
+      const result = initializeConfig(testConfigDir);
+
+      expect(result).toBe(false);
     });
   });
 });
