@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { loadConfig, getProfile } = require('../lib/config');
+const { loadConfig, getProfile, listProfiles } = require('../lib/config');
 
 describe('config module', () => {
   const testConfigDir = '/tmp/ccswitch-test';
@@ -72,6 +72,31 @@ describe('config module', () => {
 
       const profile = getProfile(config, 'nonexistent');
       expect(profile).toBeNull();
+    });
+  });
+
+  describe('listProfiles', () => {
+    test('should return array of profile names', () => {
+      const config = {
+        profiles: {
+          kimi: { ANTHROPIC_AUTH_TOKEN: 'kimi-token' },
+          anthropic: { ANTHROPIC_AUTH_TOKEN: 'anthropic-token' }
+        },
+        default: 'kimi'
+      };
+
+      const profiles = listProfiles(config);
+      expect(profiles).toEqual(['kimi', 'anthropic']);
+    });
+
+    test('should return empty array for null config', () => {
+      const profiles = listProfiles(null);
+      expect(profiles).toEqual([]);
+    });
+
+    test('should return empty array for config without profiles', () => {
+      const profiles = listProfiles({});
+      expect(profiles).toEqual([]);
     });
   });
 });
