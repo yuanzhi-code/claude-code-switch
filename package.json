@@ -1,0 +1,19 @@
+{
+  "name": "claude-code-switch",
+  "version": "1.0.0",
+  "description": "Switch between Claude Code API configurations",
+  "main": "lib/launcher.js",
+  "bin": {
+    "ccswitch": "./bin/ccswitch"
+  },
+  "scripts": {
+    "test": "echo \"Tests not yet implemented\" && exit 0"
+  },
+  "keywords": ["claude-code", "cli", "switch"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
