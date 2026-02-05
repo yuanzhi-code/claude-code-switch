@@ -52,12 +52,37 @@ ccswitch kimi
 # Use default profile
 ccswitch
 
+# List all configured profiles
+ccswitch --list
+# or
+ccswitch -l
+
+# Interactively add a new profile
+ccswitch add my-profile
+
+# Delete a profile
+ccswitch delete my-profile
+
+# Set the default profile
+ccswitch set-default my-profile
+
 # Show help
 ccswitch --help
 
 # Show version
 ccswitch --version
 ```
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `ccswitch <name>` | Launch Claude Code with specified profile |
+| `ccswitch` | Launch Claude Code with default profile |
+| `ccswitch --list` | List all configured profiles |
+| `ccswitch add <name>` | Interactively add a new profile |
+| `ccswitch delete <name>` | Delete a profile |
+| `ccswitch set-default <name>` | Set the default profile |
 
 ## Configuration
 
