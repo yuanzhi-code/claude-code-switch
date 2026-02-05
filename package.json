@@ -1,6 +1,6 @@
 {
   "name": "claude-code-switch",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Switch between Claude Code API configurations",
   "main": "lib/launcher.js",
   "bin": {
