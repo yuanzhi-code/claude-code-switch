@@ -15,6 +15,12 @@ cd /path/to/claude-code-switch
 npm link
 ```
 
+## Features
+
+- **Colored output** - Clear visual feedback for success (✓), errors (✗), warnings (⚠), and info (ℹ)
+- **Smart error messages** - Helpful suggestions and similarity matching when something goes wrong
+- **Interactive profile management** - Add, delete, and switch between API configurations easily
+
 ## Setup
 
 First run will create a config file at `~/.ccswitch/profiles.json`:
