@@ -4,7 +4,7 @@
   "description": "Switch between Claude Code API configurations",
   "main": "lib/launcher.js",
   "bin": {
-    "ccswitch": "./bin/ccswitch"
+    "ccswitch": "./bin/ccswitch.js"
   },
   "scripts": {
     "test": "jest"
